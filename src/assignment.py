@@ -114,6 +114,8 @@ if __name__ == '__main__':
 
             #elif human.body_parts(7)v.y > human.body_parts(1)v.y:
                 #hail_taxi(image)
+           #part of assignment commit on partners file     
+                
             RWrist = False
             LWrist = False
             Neck = False
