@@ -106,10 +106,34 @@ if __name__ == '__main__':
 
             # TODO ensure it only does this when someone is hailing a taxi.
             # That is, an arm is above their head.
-            hail_taxi(image)
+            #print("Test")
+            #hail_taxi(image)
+            #while True:
+            #if human.body_parts(4)v.y > human.body_parts(1)v.y:
+                #hail_taxi(image)
+
+            #elif human.body_parts(7)v.y > human.body_parts(1)v.y:
+                #hail_taxi(image)
+            
+            for k,v in human.body_parts.items():
+            #if POSE_COCO_BODY_PARTS[4] in human.body_parts.items():
+                if k == 4:
+                    print ("Right Wrist Detected")
+            
+            for k,v in human.body_parts.items():
+                if k == 7:
+                    print ("Left Wrist Detected")
+
+            for k,v in human.body_parts.items():
+                if k == 1:
+                   print ("Neck")
+
+            #7, kv in human.body_parts.items()
+            #if ( 7 in human.body_parts.items() (1,v.y) in human.body_parts.items() ):
+            #        print("Hail Taxi")
 
             # Debugging statement: remove before demonstration.
-            print([(POSE_COCO_BODY_PARTS[k], v.x, v.y) for k,v in human.body_parts.items()])
+            #print([(POSE_COCO_BODY_PARTS[k], v.x, v.y) for k,v in human.body_parts.items()])
 
         # drawing lines on an image
         image = TfPoseEstimator.draw_humans(image, humans, imgcopy=False)
