@@ -111,14 +111,12 @@ if __name__ == '__main__':
             while False:
                 try:
                     [(POSE_COCO_BODY_PARTS[4], v.y) for k,v in human.body_parts.items()] > [(POSE_COCO_BODY_PARTS[2], v.y) for k,v in human.body_parts.items()] = True
-                    True:
-                        hail_taxi(image)    
+                    hail_taxi(image)    
                 except:
                     False
                 try:
                     [(POSE_COCO_BODY_PARTS[7], v.y) for k,v in human.body_parts.items()] > [(POSE_COCO_BODY_PARTS[5], v.y) for k,v in human.body_parts.items()]
-                    True:
-                        hail_taxi(image)                
+                    hail_taxi(image)                
                 except:
                     False
 
