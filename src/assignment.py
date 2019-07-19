@@ -108,17 +108,67 @@ if __name__ == '__main__':
             # That is, an arm is above their head.
             
             #Write Code Here
-            while False:
-                try:
-                    [(POSE_COCO_BODY_PARTS[4], v.y) for k,v in human.body_parts.items()] > [(POSE_COCO_BODY_PARTS[2], v.y) for k,v in human.body_parts.items()] = True
-                    hail_taxi(image)    
-                except:
-                    False
-                try:
-                    [(POSE_COCO_BODY_PARTS[7], v.y) for k,v in human.body_parts.items()] > [(POSE_COCO_BODY_PARTS[5], v.y) for k,v in human.body_parts.items()]
-                    hail_taxi(image)                
-                except:
-                    False
+            RWrist = False
+            LWrist = False
+            Neck = False
+            RWv = 0
+            LWv = 0
+            Neckv = 0
+            #Neckv = 0#{}
+            #Neckv["x"] = 0
+            #Neckv["y"] = 0
+            
+            Print = False
+            for k,v in human.body_parts.items():
+            #if POSE_COCO_BODY_PARTS[4] in human.body_parts.items():
+                if k == 4:
+                    #print ("Right Wrist Detected")
+                    RWrist = True
+                    RWv = v.y
+                    Print = True
+            
+            for k,v in human.body_parts.items():
+                if k == 7:
+                    #print ("Left Wrist Detected")
+                    LWrist = True
+                    LWv = v.y
+                    Print = True
+
+            for k,v in human.body_parts.items():
+                if k == 1:
+                    #print ("Neck")
+                    Neck = True
+                    #Neckv["x"] = 0
+                    #Neckv["y"] = 0
+                    Neckv = v.y
+
+            #if Print == True:
+                #print([(POSE_COCO_BODY_PARTS[k], v.x, v.y) for k,v in human.body_parts.items()])
+
+            #if ( RWrist or LWrist ) and Neck:
+                #if RWv > Neckv or LWv > Neckv:
+                    #print([(POSE_COCO_BODY_PARTS[k], v.x, v.y) for k,v in human.body_parts.items()])
+                    #print ("HailTaxi")
+            #print([(POSE_COCO_BODY_PARTS[k], v.x, v.y) for k,v in human.body_parts.items()])
+            Hail = False
+            if RWrist and Neck:
+                if RWv < Neckv:
+                    #print ("HailTaxi Right")
+                    Hail = True
+                #else:
+                    #print("No Taxi")
+            
+            if LWrist and Neck:
+                if LWv < Neckv:
+                    #print("HailTaxi Left")
+                    Hail = True
+                #else:
+                    #print("No Taxi")
+
+            if Hail:
+                hail_taxi(image)
+            else:
+                print("No Taxi")
 
 
             # Debugging statement: remove before demonstration.
